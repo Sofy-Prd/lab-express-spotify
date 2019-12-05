@@ -1,4 +1,23 @@
 .indexSpot {
-    background-image: url("https://static.pexels.com/photos/167605/pexels-photo-167605.jpeg");
+    background: url("../images/background.jpeg") no-repeat;
     height:100vh;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+}
+
+.form {
+    display:flex;
+    flex-direction:column;
+    width:30%;
+    margin:auto;
+    margin-top:auto;
+    margin-bottom:auto;
+    align-items: center;
+    justify-content: center;
+}
+
+.form button {
+    margin-top:2em;
+    background: red;
 }

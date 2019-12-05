@@ -44,15 +44,63 @@ app.get('/', (req, res, next) => {
     spotifyApi
     .searchArtists(req.query.artist)
     .then(data => {
-      console.log("The received data from the API: ", data.body.artists.items);
-      //res.send(req.query.artist)
+      // console.log("The received data from the API: ", data.body.artists.items);
+      
+ 
       res.render("artists", {
-        artists: data.body.artists.items
+        artists: data.body.artists.items,
+         
+
       })
+      
       // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
     })
     .catch(err => {
       console.log("The error while searching artists occurred: ", err);
+    });
+    
+  });
+
+  app.get('/albums/:id', (req, res, next) => {
+    const id = req.params.id
+    spotifyApi
+    .getArtistAlbums(id)
+    .then(data => {
+      // console.log("The received data albums from the API: ", data.body.items);
+      
+     
+      res.render("albums", {
+        albums: data.body.items,
+         
+
+      })
+      
+      // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
+    })
+    .catch(err => {
+      console.log("The error while searching albums occurred: ", err);
+    });
+    
+  });
+
+  app.get('/tracks/:id', (req, res, next) => {
+    const stracksId = req.params.id
+    spotifyApi
+    .getAlbumTracks(stracksId)
+    .then(data => {
+      console.log("The received data tracks from the API: ", data.body.items);
+      
+     
+      res.render("tracks", {
+        tracks: data.body.items
+         
+
+      })
+      
+      // ----> 'HERE WHAT WE WANT TO DO AFTER RECEIVING THE DATA FROM THE API'
+    })
+    .catch(err => {
+      console.log("The error while searching albums occurred: ", err);
     });
     
   });
